@@ -1,2 +1,2 @@
 # restaurant-selector
-location based random restaurant selector (john and dillon)
+Learning how to create a full stack app
