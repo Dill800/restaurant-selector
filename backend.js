@@ -6,6 +6,7 @@ let app = express();
 let url = require('url');
 let axios = require('axios');
 
+// Will always return 
 app.get('/hi', (req, res) => {
 
     console.log("SDKFLJSLFJSLDf");
@@ -19,19 +20,21 @@ app.get('/hi', (req, res) => {
         } 
     }
 
-    params = '?lat=26.7&lon=80.33';
-
-    let str = [];
+    /*navigator.geolocation.getCurrentPosition((position) => {
+        console.log(position.coords.latitude);
+    },
+    (err) => {
+        console.err("error");
+    });
+*/
+    params = '?lat=29.651634&lon=-82.324829';
 
     axios.get("https://developers.zomato.com/api/v2.1/geocode" + params, config, {})
-    .then((response) => {
+    .then((apiRes) => {
         console.log("request recieved");
-        response.data.nearby_restaurants.map(restaurant => {
-            str += restaurant.restaurant.name + " | ";
-        })
-        res.send(str);
+        res.send(apiRes.data.nearby_restaurants[0]);
     }, (error) => {
-        console.log("an error was recorded");
+        console.err("an error was recorded");
         console.log(error);
     });
 
