@@ -4,6 +4,10 @@ import borg from './borg.png';
 import './App.css';
 import Main from './main.js'
 
+const fontSize2 = {
+  fontSize: '32px'
+};
+
 
 function getLat() {
 
@@ -21,7 +25,8 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <p color="red">SwampHacks Restaurant Finder</p>
+        
+        <p style = {fontSize2}>SwampHacks Restaurant Finder</p>
         <img src={borg} className="App-logo" alt="logo" />
         <p>
           Created by: Ryan Ahmed, Brock Major, Dillon McGovern, Gary Wu, Daniel Shin, Rohan Samanta
