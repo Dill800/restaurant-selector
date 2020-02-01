@@ -75,23 +75,13 @@ class Main extends Component {
     render() {
         return (
             <div>
-<<<<<<< HEAD
-
-                <h1>{this.state.resData[this.state.currentRest]}</h1>
-=======
                 <h1>Current Location: {this.state.resData[this.state.currentRest]}</h1>
->>>>>>> aadc5220c5202089d6f112b3a72d6e822e379620
                 <a href={this.state.menus[this.state.currentRest]} target = '_blank'>
                 <p>Menu</p>
                 </a>
                 
-<<<<<<< HEAD
-                <Button color="primary" onClick={this.onClick}>Get Another Location</Button>
-                <Map lat={26} lng={-82}/>
-=======
                 <Button color="primary" onClick={this.onClick}>New Restaurant</Button>
 
->>>>>>> aadc5220c5202089d6f112b3a72d6e822e379620
             </div>
         )
     }
