@@ -1,14 +1,17 @@
 import React, {Component} from 'react'
+import Button from 'react-button-component'
 import axios from 'axios'
 
 class Main extends Component {
 
     constructor() {
         super();
+        this.onClick = this.onClick.bind(this);
         this.state = {
             latitude: 0,
             longitude: 0,
-            resData: []
+            resData: [],
+            currentRest: 0
         }
     }
 
@@ -56,11 +59,17 @@ class Main extends Component {
 
     }
 
+    onClick() {
+        this.setState({currentRest: Math.floor(Math.random() * this.state.resData.length)});
+    }
+
     render() {
         return (
             <div>
-                <p>{this.state.latitude}</p>
-                <p>{this.state.resData}</p>
+
+                <h1>Current Location: {this.state.resData[this.state.currentRest]}</h1>
+                <Button color="primary" onClick={this.onClick}>Click Me!</Button>
+
             </div>
         )
     }

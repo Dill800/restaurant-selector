@@ -45,9 +45,7 @@ function App() {
         <p style = {fontSize2}>SwampHacks Restaurant Finder</p>
         <img src={borg} className="App-logo" alt="logo" />
         <p style = {createdBy}>
-          <div >
-            <p></p>
-          </div>
+          
           Created by: Ryan Ahmed, Brock Major, Dillon McGovern, Gary Wu, Daniel Shin, Rohan Samanta, David Wang
         </p>
         <a
@@ -60,7 +58,6 @@ function App() {
           Contact Us
         </a>
         <Main/>
-        <p>{getLat()} + "dsfd"</p>
 
       </header>
     </div>
