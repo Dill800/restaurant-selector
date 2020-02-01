@@ -20,19 +20,17 @@ app.get('/hi', (req, res) => {
         } 
     }
 
-    /*navigator.geolocation.getCurrentPosition((position) => {
-        console.log(position.coords.latitude);
-    },
-    (err) => {
-        console.err("error");
-    });
-*/
     params = '?lat=29.651634&lon=-82.324829';
 
-    axios.get("https://developers.zomato.com/api/v2.1/geocode" + params, config, {})
+    axios.get("https://developers.zomato.com/api/v2.1/search?lat=29.6516&lon=-82.3248&radius=3200&start=40&count=20", config, {})
     .then((apiRes) => {
         console.log("request recieved");
-        res.send(apiRes.data.nearby_restaurants[0]);
+
+        str = "";
+
+            console.log(apiRes.data.restaurants[0].restaurant);
+
+        res.send(str);
     }, (error) => {
         console.err("an error was recorded");
         console.log(error);
