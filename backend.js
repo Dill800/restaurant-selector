@@ -1,10 +1,12 @@
+let configer = require('./config');
+
 let express = require('express');
 
 let app = express();
 let url = require('url');
 let axios = require('axios');
 
-app.get('/hi', async (req, res) => {
+app.get('/hi', (req, res) => {
 
     console.log("SDKFLJSLFJSLDf");
 
@@ -12,22 +14,29 @@ app.get('/hi', async (req, res) => {
 
     const config = {
         headers: {
-            "user-key": "c6e168f7acb7f74e5ce9d91be3f30f9e",
+            "user-key": configer.apikey,
             "content-type": "application/json"
         } 
     }
 
-    let axiosResponse = await axios.get("https://developers.zomato.com/api/v2.1/geocode" + params, config, {});
-
-    console.log(axiosResponse.status);
+    params = '?lat=26.7&lon=80.33';
 
     let str = [];
-    axiosResponse.data.nearby_restaurants.map(restaurant => {
-        str += restaurant.restaurant.name + " | ";
-    })
 
-    res.send(str);
+    axios.get("https://developers.zomato.com/api/v2.1/geocode" + params, config, {})
+    .then((response) => {
+        console.log("request recieved");
+        response.data.nearby_restaurants.map(restaurant => {
+            str += restaurant.restaurant.name + " | ";
+        })
+        res.send(str);
+    }, (error) => {
+        console.log("an error was recorded");
+        console.log(error);
+    });
+
+    //res.send(str);
 
 });
 
-app.listen(4000);
+app.listen(4000, () => {console.log("this server is running")});
