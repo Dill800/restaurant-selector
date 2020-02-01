@@ -35,10 +35,9 @@ class Main extends Component {
             });
 
             let params = 'lat='+this.state.latitude+'&lon='+this.state.longitude+'&radius=4800&start=0'
-
             axios.get("https://developers.zomato.com/api/v2.1/search?" + params, config, {})
             .then((apiRes) => {
-
+                console.log(apiRes);
                 apiRes.data.restaurants.map(restaurant=> {
                     
                     let newArr = this.state.resData.concat(restaurant.restaurant.name);
@@ -51,20 +50,20 @@ class Main extends Component {
                    
                 });
 
+                this.setState({
+                    currentRest: Math.floor(Math.random() * this.state.resData.length)
+                })
+
             }, (error) => {
                 console.log(error);
             });
 
             //https://maps.googleapis.com/maps/api/directions/json?origin=Disneyland&destination=Universal+Studios+Hollywood&key=AIzaSyAc9WsXlglce1QovIPemIlIlU3kKzND3wI
-
         },
         err => {
             console.log('There was an error');
         }
         );
-
-
-
     }
 
     onClick() {
@@ -72,17 +71,15 @@ class Main extends Component {
     }
 
 
-
     render() {
         return (
             <div>
-
                 <h1>Current Location: {this.state.resData[this.state.currentRest]}</h1>
                 <a href={this.state.menus[this.state.currentRest]} target = '_blank'>
                 <p>Menu</p>
                 </a>
                 
-                <Button color="primary" onClick={this.onClick}>Click Me!</Button>
+                <Button color="primary" onClick={this.onClick}>New Restaurant</Button>
 
             </div>
         )
