@@ -1,6 +1,8 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Main from './main.js'
+
 
 function getLat() {
 
@@ -9,7 +11,7 @@ function getLat() {
     return position.coords.latitude;
   },
   err => {
-    console.err('you fucked up');
+    console.err('error' + err);
   });
 
 }
@@ -30,7 +32,7 @@ function App() {
         >
           Learn React
         </a>
-
+        <Main/>
         <p>{getLat()} + "dsfd"</p>
 
       </header>
