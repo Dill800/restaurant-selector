@@ -36,10 +36,9 @@ class Main extends Component {
             });
 
             let params = 'lat='+this.state.latitude+'&lon='+this.state.longitude+'&radius=4800&start=0'
-
             axios.get("https://developers.zomato.com/api/v2.1/search?" + params, config, {})
             .then((apiRes) => {
-
+                console.log(apiRes);
                 apiRes.data.restaurants.map(restaurant=> {
                     
                     let newArr = this.state.resData.concat(restaurant.restaurant.name);
@@ -52,20 +51,20 @@ class Main extends Component {
                    
                 });
 
+                this.setState({
+                    currentRest: Math.floor(Math.random() * this.state.resData.length)
+                })
+
             }, (error) => {
                 console.log(error);
             });
 
             //https://maps.googleapis.com/maps/api/directions/json?origin=Disneyland&destination=Universal+Studios+Hollywood&key=AIzaSyAc9WsXlglce1QovIPemIlIlU3kKzND3wI
-
         },
         err => {
             console.log('There was an error');
         }
         );
-
-
-
     }
 
     onClick() {
@@ -73,18 +72,26 @@ class Main extends Component {
     }
 
 
-
     render() {
         return (
             <div>
+<<<<<<< HEAD
 
                 <h1>{this.state.resData[this.state.currentRest]}</h1>
+=======
+                <h1>Current Location: {this.state.resData[this.state.currentRest]}</h1>
+>>>>>>> aadc5220c5202089d6f112b3a72d6e822e379620
                 <a href={this.state.menus[this.state.currentRest]} target = '_blank'>
                 <p>Menu</p>
                 </a>
                 
+<<<<<<< HEAD
                 <Button color="primary" onClick={this.onClick}>Get Another Location</Button>
                 <Map lat={26} lng={-82}/>
+=======
+                <Button color="primary" onClick={this.onClick}>New Restaurant</Button>
+
+>>>>>>> aadc5220c5202089d6f112b3a72d6e822e379620
             </div>
         )
     }
