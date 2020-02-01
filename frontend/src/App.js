@@ -11,7 +11,7 @@ function getLat() {
     return position.coords.latitude;
   },
   err => {
-    console.err('error' + err);
+    console.log('error' + err);
   });
 
 }
