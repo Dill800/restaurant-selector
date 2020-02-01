@@ -1,5 +1,6 @@
 import React from 'react';
 import logo from './logo.svg';
+import borg from './borg.png';
 import './App.css';
 import Main from './main.js'
 
@@ -20,17 +21,18 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        <p color="red">SwampHacks Restaurant Finder</p>
+        <img src={borg} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          Created by: Ryan Ahmed, Brock Major, Dillon McGovern, Gary Wu, Daniel Shin, Rohan Samanta
         </p>
         <a
           className="App-link"
-          href="https://reactjs.org"
+          href="https://dillonmcgovern.com/"
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React
+          Contact Us
         </a>
         <Main/>
         <p>{getLat()} + "dsfd"</p>
