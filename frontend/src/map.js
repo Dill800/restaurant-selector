@@ -8,12 +8,13 @@ function Map(props) {
     return (
      
         <div style={{height: '100vh', width: '100%'}}>   
-
+            {console.log(props.lat + " " + props.lng)}
             <GoogleMapReact
             bootstrapURLKeys={{key:'AIzaSyAc9WsXlglce1QovIPemIlIlU3kKzND3wI'}}
-            center={{lat:props.lat, lng: props.lng}}
+            center={{lat: props.lat, lng: props.lng}}
             defaultZoom={17}>
             
+            {console.log(typeof(props.lat))}
             </GoogleMapReact>
 
         </div>

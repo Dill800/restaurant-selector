@@ -66,6 +66,8 @@ class Main extends Component {
 
         let restName = !this.state.updated ? <Spinner color="secondary" /> : this.state.data.restaurants[this.state.currentRest].restaurant.name;
         let menuName = !this.state.updated ? '' : this.state.data.restaurants[this.state.currentRest].restaurant.menu_url;
+        let mapLat = !this.state.updated ? 0 : this.state.data.restaurants[this.state.currentRest].restaurant.location.latitude;
+        let mapLng = !this.state.updated ? 0 : this.state.data.restaurants[this.state.currentRest].restaurant.location.longitude;
 
         return (
             <div>
@@ -75,9 +77,10 @@ class Main extends Component {
                 <p>Menu</p>
                 </a>
                 
-                <Button color="primary" onClick={this.onClick}>New Restaurant</Button>
+                <Button disabled={!this.state.updated} color="primary" onClick={this.onClick}>New Restaurant</Button>
 
-                <Map lat={this.state.latitude} lng={this.state.longitude}/>
+                {console.log(typeof(mapLng)+"SDKFHS")}
+                <Map lat={Number(mapLat)} lng={Number(mapLng)}/>
             </div>
         )
     }
