@@ -60,7 +60,6 @@ class Main extends Component {
         return (
             <div>
                 <p>{this.state.latitude}</p>
-                <p>{this.state.resData}d</p>
                 <p>{this.state.resData}</p>
             </div>
         )
