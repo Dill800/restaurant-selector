@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import Button from 'react-button-component'
 import axios from 'axios'
+import Map from './map.js'
 
 class Main extends Component {
 
@@ -77,13 +78,13 @@ class Main extends Component {
         return (
             <div>
 
-                <h1>Current Location: {this.state.resData[this.state.currentRest]}</h1>
+                <h1>{this.state.resData[this.state.currentRest]}</h1>
                 <a href={this.state.menus[this.state.currentRest]} target = '_blank'>
                 <p>Menu</p>
                 </a>
                 
-                <Button color="primary" onClick={this.onClick}>Click Me!</Button>
-
+                <Button color="primary" onClick={this.onClick}>Get Another Location</Button>
+                <Map lat={26} lng={-82}/>
             </div>
         )
     }
