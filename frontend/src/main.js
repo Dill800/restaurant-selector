@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import Button from 'react-button-component'
+import {Spinner} from 'reactstrap'
 import axios from 'axios'
 import Map from './map.js'
 
@@ -11,9 +12,9 @@ class Main extends Component {
         this.state = {
             latitude: 0,
             longitude: 0,
-            resData: [],
-            menus: [],
-            currentRest: 0
+            currentRest: 0,
+            data: [],
+            updated: false
         }
     }
 
@@ -38,28 +39,17 @@ class Main extends Component {
             let params = 'lat='+this.state.latitude+'&lon='+this.state.longitude+'&radius=4800&start=0'
             axios.get("https://developers.zomato.com/api/v2.1/search?" + params, config, {})
             .then((apiRes) => {
-                console.log(apiRes);
-                apiRes.data.restaurants.map(restaurant=> {
-                    
-                    let newArr = this.state.resData.concat(restaurant.restaurant.name);
-                    this.setState({resData: newArr});
-
-
-                    let menuArr = this.state.menus.concat(restaurant.restaurant.menu_url);
-                    console.log(restaurant.restaurant.menu_url);
-                    this.setState({menus: menuArr});
-                   
-                });
 
                 this.setState({
-                    currentRest: Math.floor(Math.random() * this.state.resData.length)
+                    data: apiRes.data,
+                    currentRest: Math.floor(Math.random() * Object.keys(apiRes.data.restaurants).length),
+                    updated: true
                 })
 
             }, (error) => {
                 console.log(error);
             });
 
-            //https://maps.googleapis.com/maps/api/directions/json?origin=Disneyland&destination=Universal+Studios+Hollywood&key=AIzaSyAc9WsXlglce1QovIPemIlIlU3kKzND3wI
         },
         err => {
             console.log('There was an error');
@@ -68,20 +58,26 @@ class Main extends Component {
     }
 
     onClick() {
-        this.setState({currentRest: Math.floor(Math.random() * this.state.resData.length)});
+        this.setState({currentRest: Math.floor(Math.random() *  Object.keys(this.state.data.restaurants).length)});
     }
 
 
     render() {
+
+        let restName = !this.state.updated ? <Spinner color="secondary" /> : this.state.data.restaurants[this.state.currentRest].restaurant.name;
+        let menuName = !this.state.updated ? '' : this.state.data.restaurants[this.state.currentRest].restaurant.menu_url;
+
         return (
             <div>
-                <h1>Current Location: {this.state.resData[this.state.currentRest]}</h1>
-                <a href={this.state.menus[this.state.currentRest]} target = '_blank'>
+
+                <h1>Current Location: {restName}</h1>
+                <a href={menuName} target = '_blank'>
                 <p>Menu</p>
                 </a>
                 
                 <Button color="primary" onClick={this.onClick}>New Restaurant</Button>
 
+                <Map lat={this.state.latitude} lng={this.state.longitude}/>
             </div>
         )
     }
