@@ -7,7 +7,7 @@ function Map(props) {
 
     return (
      
-        <div style={{height: '100vh', width: '100%'}}>   
+        <div style={{height: '100vh', width: '50vw'}}>   
             {console.log(props.lat + " " + props.lng)}
             <GoogleMapReact
             bootstrapURLKeys={{key:'AIzaSyAc9WsXlglce1QovIPemIlIlU3kKzND3wI'}}

@@ -3,6 +3,7 @@ import Button from 'react-button-component'
 import {Spinner} from 'reactstrap'
 import axios from 'axios'
 import Map from './map.js'
+import './main.css'
 
 class Main extends Component {
 
@@ -17,6 +18,8 @@ class Main extends Component {
             updated: false
         }
     }
+
+    
 
     componentDidMount() {
 
@@ -71,16 +74,28 @@ class Main extends Component {
 
         return (
             <div>
-
-                <h1>Current Location: {restName}</h1>
-                <a href={menuName} target = '_blank'>
-                <p>Menu</p>
-                </a>
                 
-                <Button disabled={!this.state.updated} color="primary" onClick={this.onClick}>New Restaurant</Button>
+                <div className='row'>
+                    <div className='col'>
+                        <div className='restText'>
 
-                {console.log(typeof(mapLng)+"SDKFHS")}
-                <Map lat={Number(mapLat)} lng={Number(mapLng)}/>
+                        <Button disabled={!this.state.updated} color="primary" onClick={this.onClick}>New Restaurant</Button>
+
+                            <h3>Current Location:</h3>
+                            <h4>{restName}</h4>
+                        </div>
+                        
+                        <br/>
+                        
+                        <a href={menuName} target = '_blank'>
+                        <p>Menu</p>
+                        </a>
+                    
+                    </div>
+                    <div className='col map'>
+                        <Map lat={Number(mapLat)} lng={Number(mapLng)}/>
+                    </div>
+                </div>
             </div>
         )
     }

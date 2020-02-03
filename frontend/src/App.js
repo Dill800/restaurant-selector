@@ -11,7 +11,6 @@ const fontSize2 = {
 };
 
 const babyBloo = {
- 
   backgroundColor: 'lightblue'
 };
 
@@ -24,18 +23,6 @@ const contactUs = {
   color: '#007399'
 }
 
-
-function getLat() {
-
-  navigator.geolocation.getCurrentPosition(position => {
-    console.log(position.coords.latitude);
-    return position.coords.latitude;
-  },
-  err => {
-    console.log('error' + err);
-  });
-
-}
 
 function App() {
   return (
@@ -57,6 +44,7 @@ function App() {
         >
           Contact Us
         </a>
+        
         <Main/>
 
       </header>

@@ -1,0 +1,22 @@
+.row {
+    display: flex;
+}
+
+.column {
+    flex: 50vw;
+    width: 100%
+}
+
+.restText {
+    font-size: calc(10px + 2vw);
+    text-align: center;
+    margin-top: 3em;
+    margin-right: 5em;
+    margin-left: 5em;
+}
+
+.map {
+    border-style: solid;
+    border-width: 10px;
+    border-color: black;
+}
